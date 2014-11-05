@@ -18,7 +18,7 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://flatbrains.eu:3306"
+            url = "jdbc:mysql://flatbrains.eu:3306/CWitter"
 
             // Print Hibernate SQL to the console
             logSql = true
