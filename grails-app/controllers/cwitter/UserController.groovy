@@ -76,16 +76,27 @@ class UserController {
     {
         if(!session.user)
         {
-
+            redirect(action: 'login')
         }
     }
 
     def login(User userInstance)
     {
-        User.where {
+       def query = User.where {
             password == userInstance.password
             username == userInstance.username
         }
+        if(query.isNotNull())
+        {
+            redirect(controller: User,action: acceuil())
+            return true
+        }
+        return false
+    }
+
+    def acceuil()
+    {
+        redirect(action: 'index')
     }
 
     @Transactional
