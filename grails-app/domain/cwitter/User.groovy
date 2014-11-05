@@ -7,7 +7,7 @@ class User {
     String firstname
     String password
     String email
-    static hasMany = [follower : User , cweet: cwitter.Message]
+    static hasMany = [follower : User , cweet: Cweet]
 
 
     static constraints = {

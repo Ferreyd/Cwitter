@@ -1,8 +1,9 @@
 package cwitter
 
-class Message {
+class Cweet {
 
     String message
+    Date date
     static belongsTo = [User]
 
     static constraints = {
