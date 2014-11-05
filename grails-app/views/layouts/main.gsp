@@ -25,9 +25,22 @@
 
 	</g:if>
 	<g:else>
-		<!--
-		 Inserer code forumlaire ici
-		-->
+        <g:if test="${flash.message}">
+            <div class="message">${flash.message}</div>
+        </g:if>
+
+        <g:form controller="user" action="login" method="post">
+            <div>
+                <label for="login">Login:</label>
+                <g:textfield id="login" name="name" maxlength="25" ></g:textfield>
+
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <g:textField name="password" maxlength="15"></g:textField>
+            </div>
+            <input type="submit" value="Submit">
+        </g:form>
 	</g:else>
 	</body>
 </html>
