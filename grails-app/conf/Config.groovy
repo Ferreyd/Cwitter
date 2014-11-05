@@ -85,6 +85,10 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
+//Fix grails taglib g:paginate to work with bootstrap css.
+grails.plugins.twitterbootstrap.fixtaglib = true
+
+
 environments {
     development {
         grails.logging.jul.usebridge = true
