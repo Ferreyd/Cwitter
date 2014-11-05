@@ -6,6 +6,7 @@ class User {
     String lastname
     String firstname
     String password
+    String email
     static hasMany = [follower : User , cweet: Message]
 
 
@@ -14,6 +15,7 @@ class User {
         password nullable: false
         lastname nullable: true
         firstname nullable: true
+        email nullable: true
 
     }
 }
