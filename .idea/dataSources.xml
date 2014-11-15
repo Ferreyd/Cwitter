@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1449406154">
+  <component name="DataSourceManagerImpl" format="xml" hash="1893795173">
     <data-source source="LOCAL" name="Cwitter dev" uuid="6f76e2e7-cdfb-4f01-93b4-003ba2dd32c5">
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://flatbrains.eu:3306</jdbc-url>
-      <user-name>cwitter</user-name>
-      <user-password>dfc9dfdddfc3dfdedfdedfcfdfd8</user-password>
+      <jdbc-url>jdbc:mysql://flatbrains.eu:3306/CWitter</jdbc-url>
       <libraries>
         <library>
           <url>file://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar</url>
@@ -15,4 +13,3 @@
     </data-source>
   </component>
 </project>
-

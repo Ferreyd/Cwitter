@@ -1,4 +1,3 @@
-
 <%@ page import="cwitter.User" %>
 <!DOCTYPE html>
 <html>

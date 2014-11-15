@@ -45,6 +45,7 @@ class UserController {
         }
     }
 
+
     def edit(User userInstance) {
         respond userInstance
     }
@@ -71,6 +72,10 @@ class UserController {
             '*' { respond userInstance, [status: OK] }
         }
     }
+    def login()
+    {
+        redirect(uri: "/user/login.gsp")
+    }
 
     def checkUser()
     {
@@ -80,23 +85,34 @@ class UserController {
         }
     }
 
-    def login(User userInstance)
+
+    def authentification()
     {
-       def query = User.where {
-            password == userInstance.password
-            username == userInstance.username
-        }
-        if(query.isNotNull())
+        User user = User.findByUsernameAndPassword(params.username, params.password)
+        if(user)
         {
-            redirect(controller: User,action: acceuil())
-            return true
+            session.user = user
+            session.connecte = "OK"
+            flash.message = "Hello ${user.username}!"
+            redirect(controller: "user", action: "acceuil", id: user.id)
+        }else
+        {
+            redirect(uri: "/user/login.gsp")
         }
-        return false
+
     }
+
+    def logout =
+            {
+                flash.message = "Goodbye ${session.user.name}"
+                session.user = null
+                session.connecte = null
+                redirect(controller:"user", action:"list")
+            }
 
     def acceuil()
     {
-        redirect(action: 'index')
+
     }
 
     @Transactional

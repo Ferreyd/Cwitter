@@ -25,22 +25,40 @@
 
 	</g:if>
 	<g:else>
-        <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
-        </g:if>
+		<g:if test="${flash.message}">
+			<div class="message">${flash.message}</div>
+		</g:if>
 
-        <g:form controller="user" action="login" method="post">
-            <div>
-                <label for="login">Login:</label>
-                <g:textfield id="login" name="name" maxlength="25" ></g:textfield>
+		<g:form controller="user" action="authentification" method="post" >
+			<div class="dialog">
+				<table>
+					<tbody>
+					<tr class="prop">
+						<td class="name">
+							<label for="username">Login:</label>
+						</td>
+						<td>
+							<input type="text" id="username" name="username"/>
+						</td>
+					</tr>
 
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <g:textField name="password" maxlength="15"></g:textField>
-            </div>
-            <input type="submit" value="Submit">
-        </g:form>
+					<tr class="prop">
+						<td class="name">
+							<label for="password">Password:</label>
+						</td>
+						<td>
+							<input type="password" id="password" name="password"/>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="buttons">
+				<span class="button">
+					<input class="save" type="submit" value="Login" />
+				</span>
+			</div>
+		</g:form>
 	</g:else>
 	</body>
 </html>
