@@ -24,7 +24,9 @@ class CweetController {
     }
 
     @Transactional
-    def save(Cweet cweetInstance) {
+    def save() {
+        Cweet cweetInstance = new Cweet()
+        println "1"
         if (cweetInstance == null) {
             notFound()
             return
@@ -35,8 +37,24 @@ class CweetController {
             return
         }
 
+        println "2"
+        //On prend l'utilisateur qui l'a creer
+        User user = User.get(session.user.id)
+        println "3" + user.toString()
+        cweetInstance.user = user
+        //On sauvegarde le cweet
+        println "CWEET" + cweetInstance.toString()
         cweetInstance.save flush:true
+        println "CWEET" + cweetInstance.toString()
+        println "4"
 
+        //On ajoute le cweet da sa liste des cweet
+        user.cweets.add(cweetInstance)
+        println "5"
+        //On sauvegarde
+        user.save flush: true
+        println "6"
+        println "7"
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'cweet.label', default: 'Cweet'), cweetInstance.id])

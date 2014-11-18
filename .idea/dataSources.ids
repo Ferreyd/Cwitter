@@ -14,17 +14,10 @@
       <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="message" sqlType="VARCHAR" precision="140" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="FK_e74nn9sh8wsy458nd0dersj85" table="user_cweet" schema="" catalog="CWitter" columns="cweet_id"/>
-    </table>
-    <table name="message" schema="" catalog="CWitter" type="TABLE">
-      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="author_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="message" sqlType="VARCHAR" precision="140" scale="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="FK_a36o69gw5y3h6q0tp2a0mgkl0" columns="author_id" ref-table="user" ref-schema="" ref-catalog="CWitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="FK_a36o69gw5y3h6q0tp2a0mgkl0" unique="false" columns="author_id"/>
+      <foreign-key name="FK_gnkw7u9elsmvp4pl8mu5nc5rm" columns="user_id" ref-table="user" ref-schema="" ref-catalog="CWitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_gnkw7u9elsmvp4pl8mu5nc5rm" unique="false" columns="user_id"/>
     </table>
     <table name="user" schema="" catalog="CWitter" type="TABLE">
       <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -35,26 +28,17 @@
       <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="FK_a36o69gw5y3h6q0tp2a0mgkl0" table="message" schema="" catalog="CWitter" columns="author_id"/>
-      <exported-key name="FK_lbensbcvthry8n4guyqh3n7g2" table="user_cweet" schema="" catalog="CWitter" columns="user_cweet_id"/>
-      <exported-key name="FK_aocg2f8smyf20gm8rwia5rf0" table="user_user" schema="" catalog="CWitter" columns="user_follower_id"/>
+      <exported-key name="FK_gnkw7u9elsmvp4pl8mu5nc5rm" table="cweet" schema="" catalog="CWitter" columns="user_id"/>
+      <exported-key name="FK_6jc7cnrbgpg3kajsg92wi85q0" table="user_user" schema="" catalog="CWitter" columns="user_followers_id"/>
       <exported-key name="FK_s7pwk9swjfqs0w7ub9tt5s47y" table="user_user" schema="" catalog="CWitter" columns="user_id"/>
       <index name="UK_sb8bbouer5wak8vyiiy4pf2bx" unique="true" columns="username"/>
     </table>
-    <table name="user_cweet" schema="" catalog="CWitter" type="TABLE">
-      <column name="user_cweet_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="cweet_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <foreign-key name="FK_lbensbcvthry8n4guyqh3n7g2" columns="user_cweet_id" ref-table="user" ref-schema="" ref-catalog="CWitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="FK_e74nn9sh8wsy458nd0dersj85" columns="cweet_id" ref-table="cweet" ref-schema="" ref-catalog="CWitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="FK_e74nn9sh8wsy458nd0dersj85" unique="false" columns="cweet_id"/>
-      <index name="FK_lbensbcvthry8n4guyqh3n7g2" unique="false" columns="user_cweet_id"/>
-    </table>
     <table name="user_user" schema="" catalog="CWitter" type="TABLE">
-      <column name="user_follower_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="user_followers_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="user_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <foreign-key name="FK_aocg2f8smyf20gm8rwia5rf0" columns="user_follower_id" ref-table="user" ref-schema="" ref-catalog="CWitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_6jc7cnrbgpg3kajsg92wi85q0" columns="user_followers_id" ref-table="user" ref-schema="" ref-catalog="CWitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_s7pwk9swjfqs0w7ub9tt5s47y" columns="user_id" ref-table="user" ref-schema="" ref-catalog="CWitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="FK_aocg2f8smyf20gm8rwia5rf0" unique="false" columns="user_follower_id"/>
+      <index name="FK_6jc7cnrbgpg3kajsg92wi85q0" unique="false" columns="user_followers_id"/>
       <index name="FK_s7pwk9swjfqs0w7ub9tt5s47y" unique="false" columns="user_id"/>
     </table>
     <table name="CHARACTER_SETS" schema="" catalog="information_schema" type="SYSTEM VIEW">

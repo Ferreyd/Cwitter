@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1893795173">
+  <component name="DataSourceManagerImpl" format="xml" hash="4191971443">
     <data-source source="LOCAL" name="Cwitter dev" uuid="6f76e2e7-cdfb-4f01-93b4-003ba2dd32c5">
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
