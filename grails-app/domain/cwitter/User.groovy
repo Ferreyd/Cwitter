@@ -7,7 +7,8 @@ class User {
     String firstname
     String password
     String email
-    static hasMany = [followers : User , cweets: Cweet]
+    static hasMany = [cweets: Cweet, groupes : Groupe]
+    static mappedBy = [groupes: "owner"]
 
 
     static constraints = {
