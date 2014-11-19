@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="4191971443">
-    <data-source source="LOCAL" name="Cwitter dev" uuid="6f76e2e7-cdfb-4f01-93b4-003ba2dd32c5">
+  <component name="DataSourceManagerImpl" format="xml" hash="1608064660">
+    <data-source source="LOCAL" name="MySQL - Cwitter@flatbrains.eu" uuid="96a0d8c7-db43-417b-b05b-5bab4789b8a6">
       <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://flatbrains.eu:3306/CWitter</jdbc-url>
-      <libraries>
-        <library>
-          <url>file://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar</url>
-        </library>
-      </libraries>
+      <jdbc-url>jdbc:mysql://flatbrains.eu:3306/Cwitter</jdbc-url>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+      <libraries />
     </data-source>
   </component>
 </project>
