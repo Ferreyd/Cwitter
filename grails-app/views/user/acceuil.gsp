@@ -9,11 +9,21 @@
 <body>
 <g:if test="${user != null}">
     <div class="col-lg-12">
-        <h1>
+        <div class="col-lg-8">
+                Utilisateur : ${user.username} <br/>
+                <g:form url="[resource:$user, controller:'cweet', action:'create']" method="POST">
+                    <g:actionSubmit class="btn btn-primary" controller="cweet" action="create" value="${message(code: 'default.button.addCweet.label', default: 'Ajout Cweet')}" />
+                </g:form>
 
-            Utilisateur : ${user.firstname} ${user.lastname} <br/>
-            <g:link controller="cweet" action="create" id="${session.user.id}" class="btn-link">Ajout Cweet</g:link>
-        </h1>
+        </div>
+        <div class="col-lg-4">
+            <g:form url="[resource:$user, controller:'user', action:'rechercher']" method="POST">
+                <g:textField name="rechercher"/>
+                <g:actionSubmit class="btn btn-primary" value="${message(code: 'default.button.rechercher.label', default: 'Rechercher')}" />
+            </g:form>
+        </div>
+
+
     </div>
     <div class="col-lg-12 cweets">
         <h1>

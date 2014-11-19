@@ -17,7 +17,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://flatbrains.eu:3306/Cwitter"
             // Print Hibernate SQL to the console
             logSql = true
@@ -56,6 +56,8 @@ environments {
                jdbcInterceptors = "ConnectionState"
                defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
             }
+            username = "cwitter"
+            password = "cwitter"
         }
     }
 }
