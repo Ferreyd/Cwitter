@@ -67,20 +67,9 @@ class CweetController {
     @Transactional
     def delete(Cweet cweetInstance) {
 
-        if (cweetInstance == null) {
-            notFound()
-            return
-        }
-
         cweetInstance.delete flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Cweet.label', default: 'Cweet'), cweetInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+        redirect(controller: "user", action: "acceuil", id: session.user.id)
     }
 
     protected void notFound() {
