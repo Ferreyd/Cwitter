@@ -17,16 +17,36 @@
       <foreign-key name="FK_gnkw7u9elsmvp4pl8mu5nc5rm" columns="user_id" ref-table="user" ref-schema="" ref-catalog="Cwitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_gnkw7u9elsmvp4pl8mu5nc5rm" unique="false" columns="user_id"/>
     </table>
+    <table name="groupe" schema="" catalog="Cwitter" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="owner_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_jx32y1rwnquvvifj8sostpn42" columns="owner_id" ref-table="user" ref-schema="" ref-catalog="Cwitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_8ap502tchr1edckiiynty311l" table="groupe_user" schema="" catalog="Cwitter" columns="groupe_users_id"/>
+      <index name="FK_jx32y1rwnquvvifj8sostpn42" unique="false" columns="owner_id"/>
+    </table>
+    <table name="groupe_user" schema="" catalog="Cwitter" type="TABLE">
+      <column name="groupe_users_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="user_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <foreign-key name="FK_8ap502tchr1edckiiynty311l" columns="groupe_users_id" ref-table="groupe" ref-schema="" ref-catalog="Cwitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_f9y8murmrg672ly3ejqukq5wo" columns="user_id" ref-table="user" ref-schema="" ref-catalog="Cwitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_8ap502tchr1edckiiynty311l" unique="false" columns="groupe_users_id"/>
+      <index name="FK_f9y8murmrg672ly3ejqukq5wo" unique="false" columns="user_id"/>
+    </table>
     <table name="user" schema="" catalog="Cwitter" type="TABLE">
       <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="firstname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="lastname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
       <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_gnkw7u9elsmvp4pl8mu5nc5rm" table="cweet" schema="" catalog="Cwitter" columns="user_id"/>
+      <exported-key name="FK_jx32y1rwnquvvifj8sostpn42" table="groupe" schema="" catalog="Cwitter" columns="owner_id"/>
+      <exported-key name="FK_f9y8murmrg672ly3ejqukq5wo" table="groupe_user" schema="" catalog="Cwitter" columns="user_id"/>
       <exported-key name="FK_6jc7cnrbgpg3kajsg92wi85q0" table="user_user" schema="" catalog="Cwitter" columns="user_followers_id"/>
       <exported-key name="FK_s7pwk9swjfqs0w7ub9tt5s47y" table="user_user" schema="" catalog="Cwitter" columns="user_id"/>
       <index name="UK_sb8bbouer5wak8vyiiy4pf2bx" unique="true" columns="username"/>
