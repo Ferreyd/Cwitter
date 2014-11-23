@@ -17,7 +17,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://flatbrains.eu:3306/Cwitter"
             // Print Hibernate SQL to the console
             logSql = true
@@ -34,7 +34,7 @@ environments {
     }
     production {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create-drop"
             url = "jdbc:mysql://flatbrains.eu:3306/CwitterProd"
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation

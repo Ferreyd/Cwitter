@@ -9,5 +9,7 @@ class Cweet {
 
     static constraints = {
         message size: 1..140, blank: false, nullable: false
+        date blank: true, nullable: true
+        user nullable: true
     }
 }
