@@ -102,7 +102,7 @@ class UserController {
 
     }
 
-    def logout =
+    def logout ()
             {
                 flash.message = "Goodbye ${session.user.name}"
                 session.user = null
