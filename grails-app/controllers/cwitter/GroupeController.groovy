@@ -33,6 +33,11 @@ class GroupeController {
             respond groupeInstance.errors, view: 'create'
             return
         }
+        //Le propriétaire du groupe est l'utilisateur courant
+        groupeInstance.owner = session.user
+
+        println groupeInstance.toString()
+
 
         groupeInstance.save flush: true
 

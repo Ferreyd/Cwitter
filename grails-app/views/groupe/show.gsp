@@ -36,22 +36,35 @@
 				<li class="fieldcontain">
 					<span id="owner-label" class="property-label"><g:message code="groupe.owner.label" default="Owner" /></span>
 					
-						<span class="property-value" aria-labelledby="owner-label"><g:link controller="user" action="show" id="${groupeInstance?.owner?.id}">${groupeInstance?.owner?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="owner-label"><g:link controller="user" action="show" id="${groupeInstance?.owner?.id}">${groupeInstance?.owner?.username.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
 				<g:if test="${groupeInstance?.users}">
-				<li class="fieldcontain">
-					<span id="users-label" class="property-label"><g:message code="groupe.users.label" default="Users" /></span>
-					
-						<g:each in="${groupeInstance.users}" var="u">
-						<span class="property-value" aria-labelledby="users-label"><g:link controller="user" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
+					<div class="col-lg-4">
+						<li class="fieldcontain">
+							<span id="users-label" class="property-label"><g:message code="groupe.members" default="Users" /></span>
+
+							<g:each in="${groupeInstance.users}" var="u">
+								<span class="property-value" aria-labelledby="users-label"><g:link controller="user" action="show" id="${u.id}">${u?.username.encodeAsHTML()}</g:link></span>
+							</g:each>
+
+						</li>
+					</div>
+					<div class="col-lg-4">
+						<li class="fieldcontain">
+							<span id="users-label" class="property-label"><g:message code="groupe.members" default="Users" /></span>
+
+							<g:each in="${groupeInstance.users}" var="u">
+								<span class="property-value" aria-labelledby="users-label"><g:link controller="user" action="show" id="${u.id}">${u?.username.encodeAsHTML()}</g:link></span>
+							</g:each>
+
+						</li>
+					</div>
+
 				</g:if>
-			
+
 			</ol>
 			<g:form url="[resource:groupeInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
