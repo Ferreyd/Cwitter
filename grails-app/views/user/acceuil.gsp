@@ -15,6 +15,8 @@
                     <g:actionSubmit class="btn btn-primary" controller="cweet" action="create" value="${message(code: 'default.button.addCweet.label', default: 'Ajout Cweet')}" />
                 </g:form>
 
+            <g:link controller="groupe" action="create" class="btn btn-link">Ajouter un Groupe</g:link>
+
         </div>
         <div class="col-lg-4">
             <g:form url="[resource:$user, controller:'user', action:'rechercher']" method="POST">

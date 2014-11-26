@@ -33,6 +33,9 @@ class GroupeController {
             respond groupeInstance.errors, view: 'create'
             return
         }
+        //Le propriétaire du groupe est l'utilisateur courant
+        groupeInstance.owner = session.user
+
 
         groupeInstance.save flush: true
 

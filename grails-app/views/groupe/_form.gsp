@@ -11,15 +11,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: groupeInstance, field: 'owner', 'error')} required">
-	<label for="owner">
-		<g:message code="groupe.owner.label" default="Owner" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="owner" name="owner.id" from="${cwitter.User.list()}" optionKey="id" required="" value="${groupeInstance?.owner?.id}" class="many-to-one"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: groupeInstance, field: 'users', 'error')} ">
 	<label for="users">
 		<g:message code="groupe.users.label" default="Users" />
