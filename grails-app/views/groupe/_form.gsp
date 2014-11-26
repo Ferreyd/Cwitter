@@ -22,12 +22,15 @@
 <div class="fieldcontain ${hasErrors(bean: groupeInstance, field: 'users', 'error')} ">
 
 	<label for="usersDataList"><g:message code="groupe.usersDataList.label" default="users datalist"/> :</label>
-	<input list="usersDL" type="text" id="usersDataList">
+	<!--<input list="usersDL" type="text" id="usersDataList"> -->
+	<g:field name="userDataList" type="text" list="usersDL"  id="usersDataList" datalist="userDL"></g:field>
 	<datalist id="usersDL">
 		<g:each in="${cwitter.User.list()}">
 			<option value="${it.username}" id="${it.id}">
 		</g:each>
 	</datalist>
 
+
 </div>
+
 

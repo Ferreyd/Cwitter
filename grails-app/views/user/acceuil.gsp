@@ -11,18 +11,13 @@
     <div class="col-lg-12">
         <div class="col-lg-8">
                 Utilisateur : ${user.username} <br/>
-                <g:form url="[resource:$user, controller:'cweet', action:'create']" method="POST">
-                    <g:actionSubmit class="btn btn-primary" controller="cweet" action="create" value="${message(code: 'default.button.addCweet.label', default: 'Ajout Cweet')}" />
-                </g:form>
 
-            <g:link controller="groupe" action="create" class="btn btn-link">Ajouter un Groupe</g:link>
+
+
 
         </div>
         <div class="col-lg-4">
-            <g:form url="[resource:$user, controller:'user', action:'rechercher']" method="POST">
-                <g:textField name="rechercher"/>
-                <g:actionSubmit class="btn btn-primary" value="${message(code: 'default.button.rechercher.label', default: 'Rechercher')}" />
-            </g:form>
+
         </div>
 
 
