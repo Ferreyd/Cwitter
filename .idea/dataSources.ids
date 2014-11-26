@@ -12,7 +12,7 @@
       <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="message" sqlType="VARCHAR" precision="140" scale="0" nullable="false" jdbcType="12"/>
-      <column name="user_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="user_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_gnkw7u9elsmvp4pl8mu5nc5rm" columns="user_id" ref-table="user" ref-schema="" ref-catalog="Cwitter" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_gnkw7u9elsmvp4pl8mu5nc5rm" unique="false" columns="user_id"/>
