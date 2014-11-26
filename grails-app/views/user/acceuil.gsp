@@ -6,53 +6,60 @@
     <g:set var="user" value="${cwitter.User.get(params.id)}"/>
     <title><g:message code="default.create.label" args="[entityName]" /></title>
 </head>
+
 <body>
 <g:if test="${user != null}">
-    <div class="col-lg-12">
-
-        <div class="col-lg-10">
-
+    <div class="row">
+        <div class="col-lg-3">
             <g:form url="[resource: $user, controller: 'user', action: 'show']" method="GET">
-                <h2>${user.username}'s personal information:</h2>
 
-                <td> Nom: ${user.lastname} </td><br/>
-                <td> Prenom: ${user.firstname} </td><br/>
-                <td> e-mail: ${user.email} </td><br/>
+                <div class="panel panel-success">
+
+                    <div class="panel-heading">${user.username}'s personal information:</div>
+
+                    <table class="table">
+                        <td>Nom: ${user.lastname}</td>
+                        <td>Prenom: ${user.firstname}</td>
+                        <td>E-mail: ${user.email}</td>
+                    </table>
+                </div>
             </g:form>
         </div>
 
-        <div class="col-lg-10">
-                <h2>${user.username}'s Cweets:</h2>
+        <div class="col-lg-5">
+            <button class="btn btn-primary" type="button">Your Cweets:<span class="badge"></span></button>
 
-                <g:each in="${user.cweets}" var="cweet">
-                        <g:each in="${cweet}" status="i" var="cweetInstance"><br/>
-                                    <td> ${cweetInstance.message}</td>
-                                    <td><g:formatDate date="${cweetInstance.date}"/></td>
-                        </g:each>
+            <g:each in="${user.cweets}" var="cweet">
+                <g:each in="${cweet}" status="i" var="cweetInstance"><br/>
+                    <td> ${cweetInstance.message}</td>
+                    <td><g:formatDate date="${cweetInstance.date}"/></td>
                 </g:each>
-
-                <div class="col-lg-12">
-                <h4>Total number of Cweets you posted: </h4>
-                    <p> ${user.cweets.asList().size()} </p>
-                </div>
+            </g:each>
         </div>
 
-        <div class="col-lg-10">
-            <h2> you follow ${user.groupes.asList().size()} groupe </h2>
+        <div class="col-lg-4">
+            <div class="col-lg-6">
+                <a href="#">Following Groupes
+                    <span class="badge">
+                        <g:each in="${user.groupes}" var="groupeInstance">
+                            <td> ${groupeInstance.nom}</td>
+                        </g:each>
+                    </span>
+                </a>
+            </div>
+            <div class="col-lg-3">
+                <button class="btn btn-primary" type="button"> Cweets in groupes That you follows:
+                    <span class="badge"></span>
+                </button>
 
+                <g:each in="${user.groupes}" var="groupe">
+                    <div class="col-lg-3">
+                        <p>${groupe.getUsers()}<br/></p>
+                    </div>
+                </g:each>
+            </div>
         </div>
 
-        <div class="col-lg-10">
-                <h2> Cweets in groupes That ${user.username} follows:</h2>
-
-                    <g:each in="${user.groupes}" var="groupe">
-                        <div class="col-lg-12 cweet">
-                            <p>
-                                ${user.cweets.message}<br/>
-                            </p>
-                        </div>
-                    </g:each>
-        </div>
     </div>
 </g:if>
 
