@@ -17,6 +17,17 @@
 		
 	</label>
 	<g:select name="users" from="${cwitter.User.list()}" multiple="multiple" optionKey="id" size="5" value="${groupeInstance?.users*.id}" class="many-to-many"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: groupeInstance, field: 'users', 'error')} ">
+
+	<label for="usersDataList"><g:message code="groupe.usersDataList.label" default="users datalist"/> :</label>
+	<input list="usersDL" type="text" id="usersDataList">
+	<datalist id="usersDL">
+		<g:each in="${cwitter.User.list()}">
+			<option value="${it.username}" id="${it.id}">
+		</g:each>
+	</datalist>
 
 </div>
 
