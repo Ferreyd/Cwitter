@@ -38,22 +38,18 @@ class BootStrap {
         Cweet c11 = new Cweet(message: "user2 2nd message").save(flush: true)
         Cweet c12 = new Cweet(message: "user2 3rd message").save(flush: true)
 
-        Groupe g1 = new Groupe(nom : "groupe1")
-        Groupe g2 = new Groupe(nom : "groupe2")
-        Groupe g3 = new Groupe(nom : "groupe3")
+        Groupe g1 = new Groupe(nom : "groupe1", owner : u1)
+        Groupe g2 = new Groupe(nom : "groupe2", owner : u2)
+        Groupe g3 = new Groupe(nom : "groupe3", owner : u3)
 
-        g1.owner = u1
         g1.addToUsers(u4)
         g1.save(flush: true)
 
-        g2.owner = u2
         g2.addToUsers(u3)
         g2.save(flush: true)
 
-        g3.owner = u3
         g3.addToUsers(u1)
         g3.save(flush: true)
-
 
         u1.addToCweets(c1).save(flush: true)
         u1.addToCweets(c2).save(flush: true)
