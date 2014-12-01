@@ -147,15 +147,13 @@ class UserController {
     def rechercher(User userInstance)
     {
         def userRecherche
-        def test = User.findByUsernameOrFirstnameOrLastname(params.rechercher, params.rechercher, params.rechercher)
+        def test = User.findByUsername(params.rechercher)
         println 'test = ' + test.toString() + ' params ' + params.rechercher
         if(test != null)
         {
-            println "JE SUIS PAS NULL"
-            userRecherche = User.findByUsernameOrFirstnameOrLastname(params.rechercher, params.rechercher, params.rechercher).list()
+            userRecherche = User.findByUsername(params.rechercher).list()
         }else
         {
-            println "JE SUIS NULL :("
             userRecherche = message(code: 'default.recherche.testVide', default: 'Les critères de votre recherche n\'ont rien trouvé')
         }
 
