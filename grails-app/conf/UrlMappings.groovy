@@ -6,7 +6,9 @@ class UrlMappings {
                 // apply constraints here
             }
         }
-        "/"(view:"/index")
+        "/"                     (controller: 'user',action: 'acceuil')
+        "/user"                 (controller: 'user',action: 'acceuil')
+        "/groupe"               (controller: 'groupe', action: 'index')
         "500"(view:'/error')
 	}
 }
