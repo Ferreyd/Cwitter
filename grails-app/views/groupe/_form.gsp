@@ -14,9 +14,9 @@
 <div class="fieldcontain ${hasErrors(bean: groupeInstance, field: 'users', 'error')} ">
 	<label for="users">
 		<g:message code="groupe.users.label" default="Users" />
-		
+
 	</label>
-	<g:select name="users" from="${cwitter.User.list()}" multiple="multiple" optionKey="id" size="5" value="${groupeInstance?.users*.id}" class="many-to-many"/>
+	<g:select name="users" from="${cwitter.User.list()}" multiple="multiple" optionKey="id" optionValue="username" size="5" value="${groupeInstance?.users*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: groupeInstance, field: 'users', 'error')} ">

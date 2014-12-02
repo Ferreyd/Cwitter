@@ -50,6 +50,7 @@ class GroupeController {
         }
     }
 
+    @Transactional
     def edit(Groupe groupeInstance) {
         respond groupeInstance
     }
@@ -81,6 +82,7 @@ class GroupeController {
 
     }
 
+    @Transactional
     def update(Groupe groupeInstance) {
         if (groupeInstance == null) {
             notFound()

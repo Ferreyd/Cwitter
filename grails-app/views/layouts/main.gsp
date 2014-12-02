@@ -46,7 +46,12 @@
 					<ul class="nav navbar-nav navbar-right">
 						<div class="form-group">
 							<g:form url="[resource:$user, controller:'user', action:'rechercher']" method="POST">
-								<g:textField name="rechercher"/>
+								<g:field name="rechercher" type="text" list="usersDL" placeholder="username" id="usersDataList" datalist="userDL"></g:field>
+								<datalist id="usersDL">
+									<g:each in="${cwitter.User.list()}">
+										<option value="${it.username}" id="${it.id}">
+									</g:each>
+								</datalist>
 								<g:actionSubmit class="btn btn-primary" value="${message(code: 'default.button.rechercher.label', default: 'Rechercher')}" />
 							</g:form>
 						</div>

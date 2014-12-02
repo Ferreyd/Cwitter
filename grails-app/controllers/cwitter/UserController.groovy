@@ -144,20 +144,20 @@ class UserController {
         }
     }
 
-    def rechercher(User userInstance)
+    def rechercher()
     {
         def userRecherche
         def test = User.findByUsername(params.rechercher)
         println 'test = ' + test.toString() + ' params ' + params.rechercher
         if(test != null)
         {
-            userRecherche = User.findByUsername(params.rechercher).list()
+            userRecherche = User.findByUsername(params.rechercher)
         }else
         {
             userRecherche = message(code: 'default.recherche.testVide', default: 'Les critères de votre recherche n\'ont rien trouvé')
         }
 
-        [userRecherche:userRecherche]
+       redirect(controller: 'user', action: 'show', id: userRecherche.id)
     }
 
 

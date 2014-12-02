@@ -34,14 +34,5 @@
 				</fieldset>
 			</g:form>
 		</div>
-
-	<label for="choix_bieres">Indiquez votre bière préférée :</label>
-	<input list="bieres" type="text" id="choix_bieres">
-	<datalist id="bieres">
-		<option value="Meteor">
-		<option value="Pils">
-		<option value="Kronenbourg">
-		<option value="Grimbergen">
-	</datalist>
 	</body>
 </html>
