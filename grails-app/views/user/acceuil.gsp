@@ -47,7 +47,7 @@
                     <td><g:each in="${user.groupes}" var="groupeInstance">${groupeInstance.nom}</g:each></td>
                 </tr>
                 <tr>
-                    <td><h4><span class="label label-primary"> Cweets in groupes That you follows:</span></h4></td>
+                    <td><h4><span class="label label-primary"> Cweets in groupes That you follow:</span></h4></td>
                 </tr>
                 <tr>
                     <td><g:each in="${user.groupes}" var="groupe">
@@ -60,6 +60,18 @@
                                         </div>
                                     </div>
                                 </g:each>
+                            </g:each>
+                        </g:each>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h4><span class="label label-primary"> Users in your groupes:</span></h4></td>
+                </tr>
+                <tr>
+                    <td>
+                        <g:each in="${user.groupes}" var="groupe">
+                            <g:each in="${groupe.users}" status="i" var="user">
+                                ${user.username}
                             </g:each>
                         </g:each>
                     </td>
