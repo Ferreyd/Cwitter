@@ -1,5 +1,6 @@
 package cwitter
 
+import grails.converters.JSON
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -8,6 +9,11 @@ import grails.transaction.Transactional
 class GroupeController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+    def getAllUser()
+    {
+        render User.list() as JSON
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -55,6 +61,32 @@ class GroupeController {
     }
 
     @Transactional
+    def follow(Groupe groupeInstance)
+    {
+        if (groupeInstance == null) {
+            notFound()
+            return
+        }
+
+        if (groupeInstance.hasErrors()) {
+            respond groupeInstance.errors, view: 'edit'
+            return
+        }
+
+        User user = User.findById(session.user.id)
+        groupeInstance.addToUsers(user)
+        user.save(flush: true)
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Groupe.label', default: 'Groupe'), groupeInstance.id])
+                redirect groupeInstance
+            }
+            '*' { respond groupeInstance, [status: OK] }
+        }
+
+    }
+
     def update(Groupe groupeInstance) {
         if (groupeInstance == null) {
             notFound()
@@ -104,5 +136,24 @@ class GroupeController {
             }
             '*' { render status: NOT_FOUND }
         }
+    }
+
+    @Transactional
+    def searchByUsername()
+    {
+
+        println "######SEARCH = " + params.searchUsername + "  " + User.findByUsername(params.searchUsername)
+
+            User userInstance = User.findByUsername(params.searchUsername)
+            return userInstance
+
+    }
+
+    def searchWSUsername =
+    {
+        println "WS = " + params.searchUsername
+        def users = User.findByUsername(params.searchUsername)
+        render users as JSON
+
     }
 }
