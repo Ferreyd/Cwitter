@@ -34,7 +34,7 @@ class GroupeController {
             return
         }
         //Le propriétaire du groupe est l'utilisateur courant
-        groupeInstance.owner = session.user
+        groupeInstance.owner = User.get(session.user.id)
 
         println groupeInstance.toString()
 
@@ -55,6 +55,32 @@ class GroupeController {
     }
 
     @Transactional
+    def follow(Groupe groupeInstance)
+    {
+        if (groupeInstance == null) {
+            notFound()
+            return
+        }
+
+        if (groupeInstance.hasErrors()) {
+            respond groupeInstance.errors, view: 'edit'
+            return
+        }
+
+        User user = session.user
+        groupeInstance.addToUsers(user)
+        user.save(flush: true)
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Groupe.label', default: 'Groupe'), groupeInstance.id])
+                redirect groupeInstance
+            }
+            '*' { respond groupeInstance, [status: OK] }
+        }
+
+    }
+
     def update(Groupe groupeInstance) {
         if (groupeInstance == null) {
             notFound()
