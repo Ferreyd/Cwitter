@@ -13,9 +13,9 @@
         <div class="col-lg-3">
             <g:form url="[resource: $user, controller: 'user', action: 'show']" method="GET">
 
-                <div class="panel panel-success">
+                <div class="panel">
 
-                    <div class="panel-heading">${user.username}'s personal information:</div>
+                    <div><h2><span class="label label-primary">${user.username}'s personal information:</span></h2></div>
 
                     <table class="table">
                         <td>Nom: ${user.lastname}</td>
@@ -26,8 +26,9 @@
             </g:form>
         </div>
 
-        <div class="col-lg-5">
-            <button class="btn btn-primary" type="button">Your Cweets:<span class="badge"></span></button>
+        <div class="col-lg-4">
+            <!--button class="btn btn-primary" type="button">Your Cweets:<span class="badge"></span></button-->
+            <h2><span class="label label-primary"> Your Cweets: </span></h2>
 
             <g:each in="${user.cweets}" var="cweet">
                 <g:each in="${cweet}" status="i" var="cweetInstance"><br/>
@@ -38,26 +39,32 @@
         </div>
 
         <div class="col-lg-4">
-            <div class="col-lg-6">
-                <a href="#">Following Groupes
-                    <span class="badge">
-                        <g:each in="${user.groupes}" var="groupeInstance">
-                            <td> ${groupeInstance.nom}</td>
+            <table>
+                <tr>
+                    <td><h2><span class="label label-primary">Following Groupes</span></h2></td>
+                </tr>
+                <tr>
+                    <td><g:each in="${user.groupes}" var="groupeInstance">${groupeInstance.nom}</g:each></td>
+                </tr>
+                <tr>
+                    <td><h4><span class="label label-primary"> Cweets in groupes That you follows:</span></h4></td>
+                </tr>
+                <tr>
+                    <td><g:each in="${user.groupes}" var="groupe">
+                            <g:each in="${groupe.users}" status="i" var="user">
+                                <g:each in="${user.cweets}" var="cweet">
+                                    <div id="groupeMessages">
+                                        ${cweet.message}<br/>
+                                        <div id="messageUser&Date">
+                                            par ${cweet.user.username} le ${cweet.date} </br>
+                                        </div>
+                                    </div>
+                                </g:each>
+                            </g:each>
                         </g:each>
-                    </span>
-                </a>
-            </div>
-            <div class="col-lg-3">
-                <button class="btn btn-primary" type="button"> Cweets in groupes That you follows:
-                    <span class="badge"></span>
-                </button>
-
-                <g:each in="${user.groupes}" var="groupe">
-                    <div class="col-lg-3">
-                        <p>${groupe.getUsers()}<br/></p>
-                    </div>
-                </g:each>
-            </div>
+                    </td>
+                </tr>
+            </table>
         </div>
 
     </div>
