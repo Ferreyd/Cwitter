@@ -1,50 +1,9 @@
-<%@ page import="cwitter.User" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'groupe.label', default: 'Groupe')}" />
-		<g:javascript library="prototype" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
-		<g:javascript>
-	function updateUsername(e) {
-		// The response comes back as a bunch-o-JSON
-		var users = eval("(" + e.responseText + ")")	// evaluate JSON
-
-		if (cities) {
-			var rselect = document.getElementById('users')
-
-			// Clear all previous options
-			var l = rselect.length
-
-			while (l > 0) {
-				l--
-				rselect.remove(l)
-			}
-
-			// Rebuild the select
-			for (var i=0; i < users.length; i++) {
-				var user = users[i]
-				var opt = document.createElement('option');
-				opt.text = user.username
-				opt.value = user.id
-			  	try {
-			    	rselect.add(opt, null) // standards compliant; doesn't work in IE
-			  	}
-		  		catch(ex) {
-		    		rselect.add(opt) // IE only
-		  		}
-			}
-		}
-	}
-
-
-	// This is called when the page loads to initialize city
-	var zselect = document.getElementById('users');
-	var zopt = zselect.options[zselect.selectedIndex]
-	${remoteFunction(controller:"groupe", action:"searchWSUsername", params:"'id=' + zopt.value", onComplete:"updateUsername(e)")}
-
-		</g:javascript>
 	</head>
 	<body>
 		<a href="#create-groupe" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -67,15 +26,22 @@
 			</ul>
 			</g:hasErrors>
 			<g:form url="[resource:groupeInstance, action:'save']" >
-
-				<label for="nom">
-					<g:message code="groupe.nom.label" default="Nom du groupe" />
-					<span class="required-indicator">*</span>
-				</label>
-				<g:textField name="nom" required="" value="${groupeInstance?.nom}"/>
-				<g:select name="searchUser" from="${User.list()} value="/>
+				<fieldset class="form">
+					<g:render template="form"/>
+				</fieldset>
+				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+				</fieldset>
 			</g:form>
 		</div>
+
+	<label for="choix_bieres">Indiquez votre bière préférée :</label>
+	<input list="bieres" type="text" id="choix_bieres">
+	<datalist id="bieres">
+		<option value="Meteor">
+		<option value="Pils">
+		<option value="Kronenbourg">
+		<option value="Grimbergen">
+	</datalist>
 	</body>
 </html>
