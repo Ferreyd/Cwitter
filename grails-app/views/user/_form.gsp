@@ -46,22 +46,3 @@
 	<g:textField name="email" value="${userInstance?.email}"/>
 
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'cweet', 'error')} ">
-	<label for="cweet">
-		<g:message code="user.cweet.label" default="Cweet" />
-		
-	</label>
-	<g:select name="cweet" from="${cwitter.Cweet.list()}" multiple="multiple" optionKey="id" size="5" value="${userInstance?.cweet*.id}" class="many-to-many"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'follower', 'error')} ">
-	<label for="follower">
-		<g:message code="user.follower.label" default="Follower" />
-		
-	</label>
-	<g:select name="follower" from="${cwitter.User.list()}" multiple="multiple" optionKey="id" size="5" value="${userInstance?.follower*.id}" class="many-to-many"/>
-
-</div>
-

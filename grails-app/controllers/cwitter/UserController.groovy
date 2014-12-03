@@ -4,7 +4,7 @@ package cwitter
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class UserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -20,6 +20,27 @@ class UserController {
 
     def create() {
         respond new User(params)
+    }
+
+    @Transactional
+    def register()
+    {
+
+        User userInstance = new User()
+        userInstance.lastname= params.lastname
+        userInstance.firstname= params.firstname
+        userInstance.username= params.username
+        userInstance.email= params.email
+        userInstance.password= params.password
+
+        userInstance.save(flush: true)
+
+
+        session.id = userInstance.id
+        println "userinstqnce = " + userInstance.toString()
+
+        redirect(controller: 'user', action: 'acceuil', id: userInstance.id)
+
     }
 
     @Transactional

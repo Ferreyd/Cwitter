@@ -39,7 +39,7 @@
 						</li>
 						<li>
 							<g:form url="[resource:$user, controller:'groupe', action:'index']" method="POST">
-								<g:actionSubmit class="btn btn-default" controller="groupe" action="create" value="${message(code: 'default.button.groupe.list', default: 'Liste Groupe')}" />
+								<g:actionSubmit class="btn btn-default" controller="groupe" action="index" value="${message(code: 'default.button.groupe.list', default: 'Liste Groupe')}" />
 							</g:form>
 						</li>
 					</ul>
@@ -106,6 +106,69 @@
 				</span>
 			</div>
 		</g:form>
+
+		<h4><span class="label label-primary">Create a new account</span> </h4>
+
+		<g:form method="post" url="[resource: userInstance,controller: 'user', action: 'register']" >
+			<div class="dialog">
+				<table>
+					<tbody>
+					<tr class="prop">
+						<td class="name">
+							<label for="lastname"> Last name:</label>
+						</td>
+						<td>
+							<input type="text" id="lastname" name="lastname">
+						</td>
+					</tr>
+
+					<tr class="prop">
+						<td class="name">
+							<label for="firstname"> First name:</label>
+						</td>
+						<td>
+							<input type="text" id="firstname" name="firstname">
+						</td>
+					</tr>
+
+					<tr class="prop">
+						<td class="name">
+							<label for="newusername"> User name:</label>
+						</td>
+						<td>
+							<input type="text" id="newusername" name="newusername">
+						</td>
+					</tr>
+
+					<tr class="prop">
+						<td class="name">
+							<label for="email"> e-mail:</label>
+						</td>
+						<td>
+							<input type="text" id="email" name="email">
+						</td>
+					</tr>
+
+					<tr class="prop">
+						<td class="name">
+							<label for="newpassword"> Password:</label>
+						</td>
+						<td>
+							<input type="password" id="newpassword" name="newpassword">
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="buttons">
+				<span class="button">
+					<!--input class="save" type="submit" value="Register"/-->
+					<g:submitButton class="button" name="submitButton" value="Create Account" />
+
+				</span>
+			</div>
+		</g:form>
+
 	</g:else>
 	</body>
 </html>
