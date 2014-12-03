@@ -27,8 +27,22 @@ class GroupeController {
     {
         Groupe groupeInstance = Groupe.findByNom(params.groupeInstance)
         groupeInstance.users.add(User.findByUsername(params.userDataList))
-        def print = groupeInstance.users
-        render(template:'userList1', collection:print, var:'users')
+        def print = groupeInstance
+
+        render(template:'userList1', collection:print, var:'groupeInstance')
+
+    }
+
+    def supprimerUser()
+    {
+        User userInstance = User.get(params.userDelete)
+        Groupe groupeInstance = Groupe.findByNom(params.groupeInstance)
+
+        groupeInstance.removeFromUsers(userInstance)
+
+        groupeInstance.save(flush: true)
+
+        redirect(controller: 'groupe', action: 'index')
 
     }
 
@@ -82,7 +96,6 @@ class GroupeController {
     @Transactional
     def unfollow()
     {
-
         User user = User.get(session.user.id)
         def groupeInstance = Groupe.get(params.idGroupe)
 

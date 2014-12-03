@@ -44,7 +44,7 @@
 
 	</g:form>
 	<fieldset class="buttons">
-		<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+		<g:actionSubmit class="btn btn-lg btn-success" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 	</fieldset>
 
 	<g:formRemote url="[action: 'usersAdd']" update="updateMe" name="usersAdd">
@@ -55,13 +55,13 @@
 				<option value="${it.username}" id="${it.id}">
 			</g:each>
 		</datalist>
-		<g:submitButton name="Submit" />
+		<g:submitButton name="Ajouter utilisateur" class="btn btn-lg btn-success"/>
 	</g:formRemote>
 	<h3>Liste des users ajoutees : </h3><br/>
 
-<div id="updateMe">
-	<g:render id="" template="userList1" collection="${users}"/>
-</div>
+        <div id="updateMe">
+            <g:render template="userList1"/>
+        </div>
 
 </div>
 </body>

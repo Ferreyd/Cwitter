@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div id="create-groupe" class="content scaffold-create" role="main">
-			<h1>Creation d'un groupe</h1>
+			<h1>Creation d'un groupe</h1><br/>
 			<g:form url="[resource:groupeInstance, action:'save']" >
 				<fieldset class="form">
 					<div class="fieldcontain ${hasErrors(bean: groupeInstance, field: 'nom', 'error')} required">
@@ -15,10 +15,10 @@
 							<g:message code="groupe.nom.label" default="Nom" />
 							<span class="required-indicator">*</span>
 						</label>
-						<g:textField name="nom" required="" value="${groupeInstance?.nom}"/>
+						<g:textField name="nom" required="" placeholder="Nom du groupe" value="${groupeInstance?.nom}"/>
 
 					</div>
-
+                    <br/>
 					<div class="fieldcontain ${hasErrors(bean: groupeInstance, field: 'users', 'error')} ">
 						<label for="users">
 							<g:message code="groupe.users.label" default="Users" />
@@ -29,7 +29,7 @@
 
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save btn btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="save btn btn-primary btn-lg" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
 			</g:form>
 		</div>
