@@ -80,12 +80,9 @@ class GroupeController {
     }
 
     @Transactional
-    def follow()
+    def follow(Groupe groupeInstance)
     {
-
         User user = User.get(session.user.id)
-        def groupeInstance = Groupe.get(params.idGroupe)
-
         groupeInstance.addToUsers(user)
         user.save(flush: true)
 
@@ -94,11 +91,9 @@ class GroupeController {
     }
 
     @Transactional
-    def unfollow()
+    def unfollow(Groupe groupeInstance)
     {
         User user = User.get(session.user.id)
-        def groupeInstance = Groupe.get(params.idGroupe)
-
         groupeInstance.removeFromUsers(user)
         user.save(flush: true)
 
