@@ -37,6 +37,11 @@
 								<g:actionSubmit class="btn btn-default" controller="groupe" action="create" value="${message(code: 'default.button.groupe.label', default: 'Ajout Groupe')}" />
 							</g:form>
 						</li>
+						<li>
+							<g:form url="[resource:$user, controller:'groupe', action:'index']" method="POST">
+								<g:actionSubmit class="btn btn-default" controller="groupe" action="create" value="${message(code: 'default.button.groupe.list', default: 'Liste Groupe')}" />
+							</g:form>
+						</li>
 					</ul>
 					<form class="navbar-form navbar-left">
 							<div class="welcome">
