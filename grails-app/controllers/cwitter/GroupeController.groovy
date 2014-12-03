@@ -23,6 +23,16 @@ class GroupeController {
     }
 
     @Transactional
+    def usersAdd()
+    {
+        Groupe groupeInstance = Groupe.findByNom(params.groupeInstance)
+        groupeInstance.users.add(User.findByUsername(params.userDataList))
+        def print = groupeInstance.users
+        render(template:'userList1', collection:print, var:'users')
+
+    }
+
+    @Transactional
     def save(Groupe groupeInstance) {
         if (groupeInstance == null) {
             notFound()

@@ -8,16 +8,25 @@
 	<body>
 		<div id="create-groupe" class="content scaffold-create" role="main">
 			<h1>Creation d'un groupe</h1>
-			<g:hasErrors bean="${groupeInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${groupeInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
 			<g:form url="[resource:groupeInstance, action:'save']" >
 				<fieldset class="form">
-					<g:render template="form"/>
+					<div class="fieldcontain ${hasErrors(bean: groupeInstance, field: 'nom', 'error')} required">
+						<label for="nom">
+							<g:message code="groupe.nom.label" default="Nom" />
+							<span class="required-indicator">*</span>
+						</label>
+						<g:textField name="nom" required="" value="${groupeInstance?.nom}"/>
+
+					</div>
+
+					<div class="fieldcontain ${hasErrors(bean: groupeInstance, field: 'users', 'error')} ">
+						<label for="users">
+							<g:message code="groupe.users.label" default="Users" />
+
+						</label>
+						<g:select name="users" from="${cwitter.User.list()}" multiple="multiple" optionKey="id" optionValue="username" size="5" value="${groupeInstance?.users*.id}" class="many-to-many"/>
+					</div>
+
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
