@@ -26,6 +26,11 @@
                     <input type="hidden" name="idGroupe" value="${groupeInstance.id}"/>
                     <g:actionSubmit action="follow" name="Follow" class="btn btn-primary btn-lg" value="Follow"/>
                 </g:form>
+                <br/>
+                <g:form action="unfollow">
+                    <input type="hidden" name="idGroupe" value="${groupeInstance.id}"/>
+                    <g:actionSubmit action="unfollow" name="Unfollow" class="btn btn-danger btn-lg" value="Unfollow"/>
+                </g:form>
 
 			</div>
 		</div>

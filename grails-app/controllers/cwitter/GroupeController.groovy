@@ -80,6 +80,21 @@ class GroupeController {
     }
 
     @Transactional
+    def unfollow()
+    {
+
+        User user = User.get(session.user.id)
+        def groupeInstance = Groupe.get(params.idGroupe)
+
+        groupeInstance.removeFromUsers(user)
+        user.save(flush: true)
+
+        redirect(controller: 'groupe', action: 'index')
+
+    }
+
+
+    @Transactional
     def update(Groupe groupeInstance) {
         if (groupeInstance == null) {
             notFound()
