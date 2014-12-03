@@ -67,23 +67,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.cweet}">
+				<g:if test="${userInstance?.cweets}">
 				<li class="fieldcontain">
 					<span id="cweet-label" class="property-label"><g:message code="user.cweet.label" default="Cweet" /></span>
 					
 						<g:each in="${userInstance.cweet}" var="c">
 						<span class="property-value" aria-labelledby="cweet-label"><g:link controller="cweet" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.follower}">
-				<li class="fieldcontain">
-					<span id="follower-label" class="property-label"><g:message code="user.follower.label" default="Follower" /></span>
-					
-						<g:each in="${userInstance.follower}" var="f">
-						<span class="property-value" aria-labelledby="follower-label"><g:link controller="user" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
