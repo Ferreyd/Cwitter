@@ -81,39 +81,31 @@
 			<div class="message">${flash.message}</div>
 		</g:if>
 
-		<g:form url="[resource: userInstance, controller: 'user', action: 'authentification']" method="post" >
-			<div class="dialog">
-				<table>
-					<tbody>
-					<tr class="prop">
-						<td class="name">
-							<label for="username">Login:</label>
-						</td>
-						<td>
-							<input type="text" id="username" name="username"/>
-						</td>
-					</tr>
 
-					<tr class="prop">
-						<td class="name">
-							<label for="password">Password:</label>
-						</td>
-						<td>
-							<input type="password" id="password" name="password"/>
-						</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="buttons">
-				<span class="button">
-					<input class="save" type="submit" value="Login" />
-				</span>
-			</div>
+		<g:form style="width: 50%" url="[resource: userInstance, controller: 'user', action: 'authentification']" method="post" >
+			<fieldset>
+				<legend>Login</legend>
+				<p>
+					please login with your username and password.</br>
+					Don't have an account ?
+					<g:link controller="user" action="create"> Sign up now!</g:link>
+				</p>
+				<p>
+					<label for="username">Username</label>
+					<g:textField name="username"/>
+				</p>
+				<p>
+					<label for="password">Password</label>
+					<g:passwordField name="password"/>
+				</p>
+				<p class="button">
+					<label></label>
+					<g:submitButton class="save" type="submit" name="submitButton" value="Login"/>
+				</p>
+			</fieldset>
 		</g:form>
 
-		<h4><span class="label label-primary">Create a new account</span> </h4>
-		<g:link controller="user" action="create">Cliquez ici pour creer un compte</g:link>
+
 
 	</g:else>
 	</body>

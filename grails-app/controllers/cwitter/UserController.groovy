@@ -132,7 +132,7 @@ class UserController {
                 flash.message = "Goodbye ${session.user.username}"
                 session.user = null
                 session.connecte = null
-                redirect(controller:"user", action:"list", uri: "/layouts/main.gsp")
+                redirect(controller:"user", action:"list", uri: "/user/acceuil.gsp")
 
             }
 
