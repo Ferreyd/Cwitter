@@ -25,17 +25,24 @@
 			</div>
 		</div>
 		<div class="col-lg-6">
-			<h4><span class="label label-primary"> Cweets in this groupe:</span></h4>
-				<g:each in="${groupeInstance.users}" status="i" var="user">
-					<g:each in="${user.cweets}" var="cweet">
-						<div id="groupeMessages">
-							${cweet.message}<br/>
-							<div id="messageUser&Date">
-								par ${cweet.user.username} le ${cweet.date} </br>
-							</div>
-						</div>
-					</g:each>
-				</g:each>
+            <table class="table table-striped table-bordered">
+                <g:sortableColumn property="user" defaultOrder="desc" title="user"/>
+                <g:sortableColumn property="cweet" defaultOrder="desc" title="cweet"/>
+                <g:each in="${groupeInstance.users}" status="i" var="user">
+                    <g:each in="${user.cweets}" var="cweet">
+                        <div id="groupeMessages">
+                            <tr>
+                                <td>
+                                    ${cweet.user.username}
+                                </td>
+                                <td>
+                                    ${cweet.message}<br/>
+                                </td>
+                            </tr>
+                        </div>
+                    </g:each>
+                </g:each>
+            </table>
 
 		</div>
 	</div>
