@@ -37,7 +37,7 @@ class UserController {
 
 
         session.id = userInstance.id
-        println "userinstqnce = " + userInstance.toString()
+        println "userinstance = " + userInstance.toString()
 
         redirect(controller: 'user', action: 'acceuil', id: userInstance.id)
 
@@ -101,6 +101,7 @@ class UserController {
         redirect(uri: "/user/login.gsp")
     }
 
+
     def checkUser()
     {
         if(!session.user)
@@ -128,10 +129,11 @@ class UserController {
 
     def logout ()
             {
-                flash.message = "Goodbye ${session.user.name}"
+                flash.message = "Goodbye ${session.user.username}"
                 session.user = null
                 session.connecte = null
-                redirect(controller:"user", action:"list")
+                redirect(controller:"user", action:"list", uri: "/layouts/main.gsp")
+
             }
 
     def acceuil()

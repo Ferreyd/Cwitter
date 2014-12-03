@@ -42,6 +42,11 @@
 								<g:actionSubmit class="btn btn-default" controller="groupe" action="index" value="${message(code: 'default.button.groupe.list', default: 'Liste Groupe')}" />
 							</g:form>
 						</li>
+						<li>
+							<g:form url="[resource: $user, controller: 'user', action:'logout']" method="POST">
+								<g:actionSubmit class="btn btn-primary" controller="user" action="logout" value="${message(code: 'default.button.user.username', default: 'Logout')}"/>
+							</g:form>
+						</li>
 					</ul>
 					<form class="navbar-form navbar-left">
 							<div class="welcome">
