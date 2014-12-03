@@ -1,0 +1,6 @@
+*.class
+out/
+target/
+test/
+.idea/
+target/stacktrace.log
