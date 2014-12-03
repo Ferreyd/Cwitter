@@ -12,11 +12,11 @@ class User {
 
 
     static constraints = {
-        username unique: true, nullable: false
-        password nullable: false
+        username unique: true, nullable: true
+        password nullable: true
         lastname nullable: true
         firstname nullable: true
-        email email: true, blank: false
+        email email: true, blank: true
         cweets nullable: true, blank : true
 
     }

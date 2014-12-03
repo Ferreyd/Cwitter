@@ -76,7 +76,7 @@
 			<div class="message">${flash.message}</div>
 		</g:if>
 
-		<g:form controller="user" action="authentification" method="post" >
+		<g:form url="[resource: userInstance, controller: 'user', action: 'authentification']" method="post" >
 			<div class="dialog">
 				<table>
 					<tbody>
@@ -108,66 +108,7 @@
 		</g:form>
 
 		<h4><span class="label label-primary">Create a new account</span> </h4>
-
-		<g:form method="post" url="[resource: userInstance,controller: 'user', action: 'register']" >
-			<div class="dialog">
-				<table>
-					<tbody>
-					<tr class="prop">
-						<td class="name">
-							<label for="lastname"> Last name:</label>
-						</td>
-						<td>
-							<input type="text" id="lastname" name="lastname">
-						</td>
-					</tr>
-
-					<tr class="prop">
-						<td class="name">
-							<label for="firstname"> First name:</label>
-						</td>
-						<td>
-							<input type="text" id="firstname" name="firstname">
-						</td>
-					</tr>
-
-					<tr class="prop">
-						<td class="name">
-							<label for="newusername"> User name:</label>
-						</td>
-						<td>
-							<input type="text" id="newusername" name="newusername">
-						</td>
-					</tr>
-
-					<tr class="prop">
-						<td class="name">
-							<label for="email"> e-mail:</label>
-						</td>
-						<td>
-							<input type="text" id="email" name="email">
-						</td>
-					</tr>
-
-					<tr class="prop">
-						<td class="name">
-							<label for="newpassword"> Password:</label>
-						</td>
-						<td>
-							<input type="password" id="newpassword" name="newpassword">
-						</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="buttons">
-				<span class="button">
-					<!--input class="save" type="submit" value="Register"/-->
-					<g:submitButton class="button" name="submitButton" value="Create Account" />
-
-				</span>
-			</div>
-		</g:form>
+		<g:link controller="user" action="create">Cliquez ici pour creer un compte</g:link>
 
 	</g:else>
 	</body>

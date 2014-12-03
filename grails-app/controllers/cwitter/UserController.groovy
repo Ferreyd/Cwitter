@@ -22,7 +22,6 @@ class UserController {
         respond new User(params)
     }
 
-    @Transactional
     def register()
     {
 
@@ -34,6 +33,7 @@ class UserController {
         userInstance.password= params.password
 
         userInstance.save(flush: true)
+        userInstance.validate()
 
 
         session.id = userInstance.id
@@ -54,16 +54,19 @@ class UserController {
             respond userInstance.errors, view: 'create'
             return
         }
-
+        //Le propriétaire du groupe est l'utilisateur courant
         userInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
-                redirect userInstance
+                session.user = userInstance
+
             }
             '*' { respond userInstance, [status: CREATED] }
         }
+        session.user = userInstance
+        redirect(controller: 'user', action: 'acceuil', id: userInstance.id)
     }
 
 
