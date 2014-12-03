@@ -27,6 +27,7 @@
 				</ul>
 			</g:hasErrors>
 			<g:form url="[resource:userInstance, action:'save']" >
+				<h3>complete the form below to create an account<h3>
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

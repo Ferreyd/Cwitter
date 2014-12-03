@@ -34,6 +34,8 @@
                 <g:each in="${cweet}" status="i" var="cweetInstance"><br/>
                     <td> ${cweetInstance.message}</td>
                     <td><g:formatDate date="${cweetInstance.date}"/></td>
+                    <td><g:formatDate name="saleDate" value="${formatDate(format:'dd-MM-yyyy',date:saleItem?.saleDate)}"/></td>
+
                 </g:each>
             </g:each>
         </div>

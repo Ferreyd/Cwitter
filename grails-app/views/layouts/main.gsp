@@ -42,17 +42,10 @@
 								<g:actionSubmit class="btn btn-default" controller="groupe" action="index" value="${message(code: 'default.button.groupe.list', default: 'Liste Groupe')}" />
 							</g:form>
 						</li>
-						<li>
-							<g:form url="[resource: $user, controller: 'user', action:'logout']" method="POST">
-								<g:actionSubmit class="btn btn-primary" controller="user" action="logout" value="${message(code: 'default.button.user.username', default: 'Logout')}"/>
-							</g:form>
-						</li>
+
 					</ul>
-					<form class="navbar-form navbar-left">
-							<div class="welcome">
-								Welcome ${session.user.username}
-							</div>
-					</form>
+
+
 					<ul class="nav navbar-nav navbar-right">
 						<div class="form-group">
 							<g:form url="[resource:$user, controller:'user', action:'rechercher']" method="POST">
@@ -64,7 +57,19 @@
 								</datalist>
 								<g:actionSubmit class="btn btn-primary" value="${message(code: 'default.button.rechercher.label', default: 'Rechercher')}" />
 							</g:form>
+							<form class="navbar-form navbar-right">
+								<div class="welcome">
+									<h4>Welcome ${session.user.username}</h4>
+								</div>
+							</form>
 						</div>
+					</ul>
+					<ul>
+						<li>
+							<g:form url="[resource: $user, controller: 'user', action:'logout']" method="POST">
+								<g:actionSubmit class="btn btn-primary" controller="user" action="logout" value="${message(code: 'default.button.user.username', default: 'Logout')}"/>
+							</g:form>
+						</li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
