@@ -16,7 +16,8 @@ class User {
         password nullable: false
         lastname nullable: true
         firstname nullable: true
-        email nullable: true
+        email email: true, blank: false
+        cweets nullable: true, blank : true
 
     }
 }

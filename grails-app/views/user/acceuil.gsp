@@ -85,7 +85,7 @@
 <g:else>
     <h1>
         Il n'y a pas d'utilisateur avec cet identifiant. <br/>
-        Cliquez <g:link action="acceuil" id="${session.user.id}">sur ce lien</g:link> pour revenir à votre compte.
+        Cliquez <g:link action="acceuil" id="${session.userInstance.id}">sur ce lien</g:link> pour revenir à votre compte.
     </h1>
 </g:else>
 
