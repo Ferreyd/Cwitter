@@ -22,9 +22,16 @@
 						<li> <g:link controller="user" action="show" id="${user.id}">${user.username}</g:link></li>
 					</g:each>
 				</div>
+                <g:form action="follow">
+                    <input type="hidden" name="idGroupe" value="${groupeInstance.id}"/>
+                    <g:actionSubmit action="follow" name="Follow" class="btn btn-primary btn-lg" value="Follow"/>
+                </g:form>
+
 			</div>
 		</div>
+
 		<div class="col-lg-6">
+            <h2>Liste des cweets</h2>
             <table class="table table-striped table-bordered">
                 <g:sortableColumn property="user" defaultOrder="desc" title="user"/>
                 <g:sortableColumn property="cweet" defaultOrder="desc" title="cweet"/>

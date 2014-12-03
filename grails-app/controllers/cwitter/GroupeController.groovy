@@ -66,29 +66,16 @@ class GroupeController {
     }
 
     @Transactional
-    def follow(Groupe groupeInstance)
+    def follow()
     {
-        if (groupeInstance == null) {
-            notFound()
-            return
-        }
 
-        if (groupeInstance.hasErrors()) {
-            respond groupeInstance.errors, view: 'edit'
-            return
-        }
+        User user = User.get(session.user.id)
+        def groupeInstance = Groupe.get(params.idGroupe)
 
-        User user = session.user
         groupeInstance.addToUsers(user)
         user.save(flush: true)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Groupe.label', default: 'Groupe'), groupeInstance.id])
-                redirect groupeInstance
-            }
-            '*' { respond groupeInstance, [status: OK] }
-        }
+        redirect(controller: 'groupe', action: 'index')
 
     }
 

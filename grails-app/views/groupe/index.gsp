@@ -9,8 +9,8 @@
 	</head>
 	<body>
     <h1>Liste des groupes</h1>
-		<div id="list-groupe" class="content scaffold-list" role="main">
-			<table>
+		<div id="list-groupe col-lg-12" class="content scaffold-list" role="main">
+			<table class="table table-bordered table-striped">
 			<thead>
 					<tr>
 					
